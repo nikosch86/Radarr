@@ -20,6 +20,9 @@ namespace NzbDrone.Core.Parser
 
         private static readonly Regex[] ReportMovieTitleRegex = new[]
         {
+            //UFC Fight Night special case
+            new Regex(@"^(?<title>(?![(\[])UFC Fight Night [0-9]+?)?(?!.*Prelims.*)(\W+|_|$)(?!\\)", RegexOptions.Compiled),
+
             //Anime [Subgroup] and Year
             new Regex(@"^(?:\[(?<subgroup>.+?)\][-_. ]?)(?<title>(?![(\[]).+?)?(?:(?:[-_\W](?<![)\[!]))*(?<year>(1(8|9)|20)\d{2}(?!p|i|x|\d+|\]|\W\d+)))+.*?(?<hash>\[\w{8}\])?(?:$|\.)", RegexOptions.IgnoreCase | RegexOptions.Compiled),
 
